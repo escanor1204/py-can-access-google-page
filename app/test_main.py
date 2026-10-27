@@ -6,7 +6,7 @@ from app.main import can_access_google_page
 
 
 @pytest.mark.parametrize(
-    "has_internet_connection, valid_google, expected_result ",
+    "has_internet_connection, valid_google, expected_result",
     [
         (True, True, "Accessible"),
         (False, True, "Not accessible"),
@@ -14,10 +14,10 @@ from app.main import can_access_google_page
         (False, False, "Not accessible"),
     ]
 )
-@mock.patch("app.main.valid_google_url")
 @mock.patch("app.main.has_internet_connection")
-def test_can_access_google_page(mock_has_internet_connection: bool,
-                                mock_valid_google_url: bool,
+@mock.patch("app.main.valid_google_url")
+def test_can_access_google_page(mock_valid_google_url: mock.Mock,
+                                mock_has_internet_connection: mock.Mock,
                                 has_internet_connection: bool,
                                 valid_google: bool,
                                 expected_result: str) -> None:
